@@ -17,31 +17,51 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                "Challenge yourself",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "Challenge yourself !",
+                      style: Theme.of(context).textTheme.displayLarge,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text("What are you waiting for?.... Signin",
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: Color(0xBBCDDCE6),
+                            ),
+                        textAlign: TextAlign.center),
+                  ],
                 ),
-                textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text("What are you waiting for?.... Login",
-                  textAlign: TextAlign.center),
               const SizedBox(
                 height: 30,
               ),
               const LoginField(),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Row(children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("Sign up"),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have an accout?"),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Sign up",
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ]),
+                ),
               )
             ],
           ),

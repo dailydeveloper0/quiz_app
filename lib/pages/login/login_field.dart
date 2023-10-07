@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/utils/app_theme.dart';
+import 'package:quiz/widgets/text_form_field.dart';
 
 class LoginField extends StatefulWidget {
   const LoginField({super.key});
@@ -28,57 +30,36 @@ class _LoginFieldState extends State<LoginField> {
       autovalidateMode: _autovalidateMode,
       child: Column(
         children: [
-          TextFormField(
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              hintText: "Username/email",
-              prefixIcon: const Icon(Icons.person),
+          cTextFormField(
+            hintText: "Username/email",
+            errorText: "Username/email is required!",
+            prefixIcon: Icon(
+              Icons.person,
+              color: AppTheme.whiteish,
             ),
-            validator: ((value) {
-              if (value == '' || value == null) {
-                return "Username/email is required";
-              }
-              return null;
-            }),
           ),
           const SizedBox(
             height: 15.0,
           ),
-          TextFormField(
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              hintText: "Password",
-              prefixIcon: const Icon(
-                Icons.lock_open_outlined,
-              ),
-              suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    _visible = !(_visible);
-                  });
-                },
-                icon: Icon(
-                  _visible ? Icons.visibility_off : Icons.visibility,
-                ),
+          cTextFormField(
+            hintText: "Password",
+            errorText: "Password is required",
+            obsecureText: !_visible,
+            prefixIcon: Icon(
+              Icons.lock_open_outlined,
+              color: AppTheme.whiteish,
+            ),
+            suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  _visible = !(_visible);
+                });
+              },
+              icon: Icon(
+                _visible ? Icons.visibility : Icons.visibility_off,
+                color: AppTheme.whiteish,
               ),
             ),
-            obscureText: _visible,
-            validator: ((value) {
-              if (value == '' || value == null) {
-                return "Password is required";
-              }
-              return null;
-            }),
           ),
           const SizedBox(
             height: 25.0,
@@ -87,7 +68,10 @@ class _LoginFieldState extends State<LoginField> {
               onPressed: submit,
               child: Text(
                 "Sign-in",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: Theme.of(context)
+                    .textTheme
+                    .displaySmall!
+                    .copyWith(color: Theme.of(context).colorScheme.primary),
               ))
         ],
       ),

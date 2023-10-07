@@ -38,11 +38,15 @@ class QuizApp extends StatelessWidget {
           title: "Quiz App",
           home: const LoginPage(),
           theme: ThemeData(
-              colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: AppTheme.primaryColor,
-            secondary: AppTheme.orange,
-            background: AppTheme.backgroundColor,
-          )),
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              primary: AppTheme.primaryColor,
+              secondary: AppTheme.orange,
+              background: AppTheme.backgroundColor,
+            ),
+            scaffoldBackgroundColor: AppTheme.backgroundColor,
+            elevatedButtonTheme: AppTheme.darkElevatedButtonThemeData,
+            textTheme: AppTheme.darkText,
+          ),
         ),
       ),
     );
